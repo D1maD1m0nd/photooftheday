@@ -13,7 +13,7 @@ import retrofit2.Response
 class PictureOfTheDayViewModel(
     private val liveDataToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
 
-) : ViewModel() {
+    ) : ViewModel() {
 
     fun getData(): LiveData<PictureOfTheDayData> {
         PodApiRepositoryImpl.getPictureOfTheDay(callBack)

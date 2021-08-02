@@ -38,7 +38,7 @@
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.example.testapp.utils.EquilateralImageView
+            <com.example.photooftheday.utils.EquilateralImageView
                 android:id="@+id/image_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,5 +72,6 @@
         android:backgroundTint="@color/colorAccent"
         app:layout_anchor="@id/bottom_app_bar"
         app:srcCompat="@drawable/ic_plus_fab"
-        app:tint="#FFFFFF" />
+        app:tint="#FFFFFF"
+        android:contentDescription="@string/pls_push_me" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

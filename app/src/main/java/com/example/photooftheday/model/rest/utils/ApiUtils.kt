@@ -1,9 +1,8 @@
 package com.example.photooftheday.model.rest.utils
 
-import androidx.viewbinding.BuildConfig
+import com.example.photooftheday.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.Request
-import java.util.*
 import java.util.concurrent.TimeUnit
 
 object ApiUtils {
@@ -23,7 +22,7 @@ object ApiUtils {
             val requestBuilder: Request.Builder = original.newBuilder()
                 .url(
                     original.url().newBuilder()
-                        .addQueryParameter("api_key", BuildConfig.BUILD_TYPE)
+                        .addQueryParameter("api_key", BuildConfig.NASA_API_KEY)
                         .build()
                 )
                 .method(original.method(), original.body())

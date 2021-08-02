@@ -1,6 +1,7 @@
 package com.example.photooftheday.model.rest.utils
 
 
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.photooftheday.R
@@ -17,4 +18,8 @@ fun Fragment.showFragment(fragment: Fragment) = this.apply {
     activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, fragment)
         ?.addToBackStack(null)?.commitAllowingStateLoss()
 }
+
+
+
+
 
