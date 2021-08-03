@@ -3,6 +3,7 @@ package com.example.photooftheday.framework.ui
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+
 import android.view.*
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -16,6 +17,9 @@ import com.example.photooftheday.model.consts.PictureOfTheDayData
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.squareup.picasso.Picasso
+
+import kotlinx.android.synthetic.main.bottom_sheet_layout.*
+
 import kotlinx.android.synthetic.main.fragment_picture_of_the_day.*
 
 class PictureOfTheDayFragment : Fragment() {
@@ -71,7 +75,6 @@ class PictureOfTheDayFragment : Fragment() {
                         .into(binding.imageView, object: com.squareup.picasso.Callback {
                         override fun onSuccess() {
                             //set animations here
-
                         }
 
                         override fun onError(e: java.lang.Exception?) {
@@ -79,6 +82,9 @@ class PictureOfTheDayFragment : Fragment() {
 
                         }
                     })
+
+                    bottom_sheet_description_header.text = serverResponseData.title
+                    bottom_sheet_description.text = serverResponseData.explanation
 
                 }
             }
