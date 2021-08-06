@@ -9,4 +9,7 @@
     <string name="settings">настройки</string>
     <string name="search">поиск</string>
     <string name="pls_push_me">Нажми меня</string>
+    <string name="yestraday">Вчера</string>
+    <string name="today">Сегодня</string>
+    <string name="random_date">Случаиная дата</string>
 </resources>

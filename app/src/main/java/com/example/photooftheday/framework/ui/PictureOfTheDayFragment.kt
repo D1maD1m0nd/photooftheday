@@ -2,10 +2,13 @@ package com.example.photooftheday.framework.ui
 
 import android.content.Intent
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 
 import android.view.*
+import android.widget.DatePicker
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -14,6 +17,7 @@ import com.example.photooftheday.MainActivity
 import com.example.photooftheday.R
 import com.example.photooftheday.databinding.FragmentPictureOfTheDayBinding
 import com.example.photooftheday.model.consts.PictureOfTheDayData
+import com.example.photooftheday.model.consts.Types
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.squareup.picasso.Picasso
@@ -41,15 +45,28 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.inputLayout.setEndIconOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data =
-                    Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
-            })
+        binding.apply {
+            inputLayout.setEndIconOnClickListener {
+                startActivity(Intent(Intent.ACTION_VIEW).apply {
+                    data =
+                        Uri.parse("$BASE_WIKI_URL${binding.inputEditText.text.toString()}")
+                })
+            }
+
+            chipGroup.setOnCheckedChangeListener { _, checkedId ->
+                var type = 0
+                when(checkedId) {
+                    yeastradayChip.id -> type = Types.MINUS.value
+                    randomChip.id -> type = Types.RANDOM.value
+                }
+                viewModel.getData(type)
+            }
         }
-        viewModel.getData().observe(
+
+        viewModel.getLiveData().observe(
             viewLifecycleOwner,
             { renderData(it) })
+        viewModel.getData()
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
         setBottomAppBar(view)
     }
@@ -150,5 +167,6 @@ class PictureOfTheDayFragment : Fragment() {
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
         private var isMain = true
+        private const val BASE_WIKI_URL = "https://en.wikipedia.org/wiki/"
     }
 }
