@@ -17,7 +17,7 @@ object PodApiRepositoryImpl {
         adapter.create(PodApi.PictureOfTheDayApi::class.java)
     }
 
-    fun getPictureOfTheDay(callback: Callback<PODServerResponseData>) {
-        api.getPictureOfTheDay().enqueue(callback)
+    fun getPictureOfTheDay(date : String,callback: Callback<PODServerResponseData>) {
+        api.getPictureOfTheDay(date).enqueue(callback)
     }
 }

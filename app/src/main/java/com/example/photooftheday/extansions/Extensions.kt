@@ -1,11 +1,13 @@
 package com.example.photooftheday.model.rest.utils
 
 
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.photooftheday.R
+import java.util.*
 
+
+fun Random.nextNegativeInt(value : Int) = Random().nextInt(value) * -1
 
 fun Fragment.showFragment(compatActivity: AppCompatActivity) = this.apply {
     compatActivity
