@@ -12,4 +12,12 @@
     <string name="yestraday">Вчера</string>
     <string name="today">Сегодня</string>
     <string name="random_date">Случаиная дата</string>
+    <string name="experemental">Exper</string>
+    <string name="moon">Moon</string>
+    <string name="light">Light</string>
+    <string name="hudi">hudi</string>
+    <string name="normal">norm</string>
+    <string name="darkens">dark</string>
+    <string name="choice_theme">Choice Theme</string>
+    <string name="theme">тема</string>
 </resources>
