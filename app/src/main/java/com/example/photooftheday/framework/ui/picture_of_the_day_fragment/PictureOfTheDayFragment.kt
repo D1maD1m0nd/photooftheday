@@ -1,24 +1,20 @@
-package com.example.photooftheday.framework.ui
+package com.example.photooftheday.framework.ui.picture_of_the_day_fragment
 
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.*
-import android.widget.Toast
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import com.example.photooftheday.MainActivity
 import com.example.photooftheday.R
 import com.example.photooftheday.databinding.FragmentPictureOfTheDayBinding
 import com.example.photooftheday.model.consts.PictureOfTheDayData
 import com.example.photooftheday.model.consts.Types
-import com.example.photooftheday.model.rest.utils.showFragment
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.bottom_sheet_layout.*
-import kotlinx.android.synthetic.main.fragment_picture_of_the_day.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PictureOfTheDayFragment : Fragment() {
@@ -61,7 +57,6 @@ class PictureOfTheDayFragment : Fragment() {
             { renderData(it) })
         viewModel.getData()
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
-        setBottomAppBar(view)
     }
 
     private fun renderData(data: PictureOfTheDayData) {
@@ -112,52 +107,8 @@ class PictureOfTheDayFragment : Fragment() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.bottom_menu, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
-            R.id.app_bar_choice_theme -> showFragment(SettingsFragment.newInstance())
-            R.id.app_bar_settings -> Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
-
-
-            android.R.id.home -> {
-                activity?.let {
-                    BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
-                }
-            }
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    private fun setBottomAppBar(view: View) {
-        val context = activity as MainActivity
-        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
-        setHasOptionsMenu(true)
-        fab.setOnClickListener {
-            if (isMain) {
-                isMain = false
-                bottom_app_bar.navigationIcon = null
-                bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_back_fab))
-                bottom_app_bar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
-            } else {
-                isMain = true
-                bottom_app_bar.navigationIcon =
-                    ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
-                bottom_app_bar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_plus_fab))
-                bottom_app_bar.replaceMenu(R.menu.bottom_menu)
-            }
-        }
-    }
-
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
-        private var isMain = true
         private const val BASE_WIKI_URL = "https://en.wikipedia.org/wiki/"
     }
 }

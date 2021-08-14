@@ -4,7 +4,9 @@ import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.photooftheday.databinding.ActivityMainBinding
-import com.example.photooftheday.framework.ui.PictureOfTheDayFragment
+import com.example.photooftheday.framework.ui.picture_of_the_day_fragment.PictureOfTheDayFragment
+import com.example.photooftheday.framework.ui.planet_fragment.PlanetsInfoFragment
+import com.example.photooftheday.framework.ui.settings_fragment.SettingsFragment
 import com.example.photooftheday.model.rest.utils.showFragment
 
 class MainActivity : AppCompatActivity() {
@@ -15,11 +17,25 @@ class MainActivity : AppCompatActivity() {
         setTheme(getPrefTheme())
         setContentView(bind.root)
         if (savedInstanceState == null) {
-            PictureOfTheDayFragment.newInstance().showFragment(this)
+            initBottomNavigationMenu()
         }
     }
+    private fun initBottomNavigationMenu() = with(bind) {
+        navView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
+                R.id.app_bar_fav -> PlanetsInfoFragment.newInstance()
+                    .showFragment(this@MainActivity)
+                R.id.app_bar_choice_theme -> SettingsFragment.newInstance()
+                    .showFragment(this@MainActivity)
+                else -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
+            }
+            return@setOnItemSelectedListener true
+        }
+        navView.selectedItemId = R.id.home
+    }
 
-    fun savePrefTheme(theme : Int){
+    fun savePrefTheme(theme: Int) {
         val sharedPref = getPreferences(Context.MODE_PRIVATE)
         sharedPref?.edit()?.apply {
             bind.apply {

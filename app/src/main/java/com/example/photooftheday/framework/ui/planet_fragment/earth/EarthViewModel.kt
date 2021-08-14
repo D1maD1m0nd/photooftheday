@@ -1,52 +1,36 @@
-package com.example.photooftheday.framework.ui
-
+package com.example.photooftheday.framework.ui.planet_fragment.earth
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.photooftheday.model.consts.PictureOfTheDayData
-import com.example.photooftheday.model.consts.Types
-import com.example.photooftheday.model.data.PODServerResponseData
-import com.example.photooftheday.model.rest.PodApiRepositoryImpl
-import com.example.photooftheday.model.rest.utils.nextNegativeInt
+import com.example.photooftheday.model.data.earth_data.Earth
+import com.example.photooftheday.model.rest.NasaApiRepositoryImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
 
-private const val MAX_VAlUE_DAYS = 1000
 private const val FORMAT_DATE = "yyyy-MM-dd"
+class EarthViewModel(val liveDataToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData()) :
+    ViewModel() {
 
-class PictureOfTheDayViewModel(
-    val liveDataToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData()
-) : ViewModel() {
-
-    fun getData(type: Int = 0) {
+    fun getData() {
         val time = Calendar.getInstance()
-
-        when (type) {
-
-            Types.MINUS.value -> time.add(Calendar.DATE, -1)
-            Types.RANDOM.value -> time.add(
-                Calendar.DATE,
-                Random().nextNegativeInt(MAX_VAlUE_DAYS)
-            )
-        }
         val dateFormat = SimpleDateFormat(FORMAT_DATE, Locale.getDefault()).format(time.time)
-
-        PodApiRepositoryImpl.getPictureOfTheDay(dateFormat, callBack)
+        NasaApiRepositoryImpl.getEarthImages(dateFormat, callBack)
     }
 
     private val callBack = object :
-        Callback<PODServerResponseData> {
+        Callback<List<Earth>> {
         override fun onResponse(
-            call: Call<PODServerResponseData>,
-            response: Response<PODServerResponseData>
+            call: Call<List<Earth>>,
+            response: Response<List<Earth>>
         ) {
             val responseData = response.body()
             if (response.isSuccessful && responseData != null) {
                 liveDataToObserve.value =
-                    PictureOfTheDayData.Success(responseData)
+                    PictureOfTheDayData.SuccessEarth(responseData.first())
             } else {
                 val message = response.message()
                 if (message.isNullOrEmpty()) {
@@ -59,7 +43,7 @@ class PictureOfTheDayViewModel(
             }
         }
 
-        override fun onFailure(call: Call<PODServerResponseData>, t: Throwable) {
+        override fun onFailure(call: Call<List<Earth>>, t: Throwable) {
             liveDataToObserve.value = PictureOfTheDayData.Error(t)
         }
 
