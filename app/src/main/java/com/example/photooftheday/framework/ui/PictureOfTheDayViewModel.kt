@@ -1,7 +1,6 @@
 package com.example.photooftheday.framework.ui
 
-import android.widget.Toast
-import androidx.lifecycle.LiveData
+
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.photooftheday.model.consts.PictureOfTheDayData
@@ -17,26 +16,25 @@ import java.util.*
 
 private const val MAX_VAlUE_DAYS = 1000
 private const val FORMAT_DATE = "yyyy-MM-dd"
+
 class PictureOfTheDayViewModel(
-    private val liveDataToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData(),
+    val liveDataToObserve: MutableLiveData<PictureOfTheDayData> = MutableLiveData()
+) : ViewModel() {
 
-    ) : ViewModel() {
+    fun getData(type: Int = 0) {
+        val time = Calendar.getInstance()
 
-    fun getData(type : Int = 0) {
-        val time = Calendar.getInstance();
-
-        when(type){
+        when (type) {
 
             Types.MINUS.value -> time.add(Calendar.DATE, -1)
-            Types.RANDOM.value -> time.add(Calendar.DATE,
-                Random().nextNegativeInt(MAX_VAlUE_DAYS))
+            Types.RANDOM.value -> time.add(
+                Calendar.DATE,
+                Random().nextNegativeInt(MAX_VAlUE_DAYS)
+            )
         }
-        val dateFormat = SimpleDateFormat (FORMAT_DATE, Locale.getDefault()).format(time.time);
+        val dateFormat = SimpleDateFormat(FORMAT_DATE, Locale.getDefault()).format(time.time)
 
         PodApiRepositoryImpl.getPictureOfTheDay(dateFormat, callBack)
-    }
-    fun getLiveData() : LiveData<PictureOfTheDayData> {
-        return liveDataToObserve
     }
 
     private val callBack = object :

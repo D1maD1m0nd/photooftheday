@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -28,7 +27,6 @@
                 app:endIconCheckable="true"
                 app:endIconDrawable="@drawable/ic_wikipedia"
                 app:endIconMode="custom"
-                app:helperText="@string/wiki_helper_text"
                 app:layout_constraintBottom_toTopOf="@+id/image_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
@@ -62,6 +60,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image_view"
                 app:singleSelection="true">
+
                 <com.google.android.material.chip.Chip
                     android:id="@+id/yeastradayChip"
                     style="@style/Widget.MaterialComponents.Chip.Choice"
@@ -93,19 +92,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        app:backgroundTint="@color/colorPrimary"
         app:fabAlignmentMode="center"
         app:hideOnScroll="true"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
+        app:layout_scrollFlags="scroll|enterAlways" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorAccent"
+        android:contentDescription="@string/pls_push_me"
         app:layout_anchor="@id/bottom_app_bar"
-        app:srcCompat="@drawable/ic_plus_fab"
-        app:tint="#FFFFFF"
-        android:contentDescription="@string/pls_push_me" />
+        app:srcCompat="@drawable/ic_plus_fab" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

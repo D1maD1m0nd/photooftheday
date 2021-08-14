@@ -7,6 +7,7 @@ import org.koin.dsl.module
 
 
 val appModule = module {
+
     //View models
-    viewModel { PictureOfTheDayViewModel(get()) }
+    viewModel { PictureOfTheDayViewModel() }
 }

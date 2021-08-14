@@ -11,4 +11,9 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="color_gray">#66000000</color>
+    <color name="shrine_pink">#FEDCD1</color>
+    <color name="black_2c">#2C2A2A</color>
+    <color name="darkens">#002a54</color>
+    <color name="darkens_back">#1F2327</color>
+    <color name="normal">#B4EEB4</color>
 </resources>

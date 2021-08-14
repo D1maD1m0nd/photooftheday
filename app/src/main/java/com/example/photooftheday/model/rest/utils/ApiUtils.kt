@@ -3,6 +3,7 @@ package com.example.photooftheday.model.rest.utils
 import com.example.photooftheday.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 object ApiUtils {
@@ -16,7 +17,7 @@ object ApiUtils {
         httpClient.connectTimeout(TIMEOUT, TimeUnit.SECONDS)
         httpClient.readTimeout(TIMEOUT, TimeUnit.SECONDS)
         httpClient.writeTimeout(TIMEOUT, TimeUnit.SECONDS)
-
+        httpClient.addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
         httpClient.addInterceptor { chain ->
             val original: Request = chain.request()
             val requestBuilder: Request.Builder = original.newBuilder()
@@ -26,6 +27,7 @@ object ApiUtils {
                         .build()
                 )
                 .method(original.method(), original.body())
+
             val request: Request = requestBuilder.build()
             chain.proceed(request)
         }

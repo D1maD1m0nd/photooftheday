@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Widget.App.BottomAppBar.Hudi" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomAppBar.Hudi</item>
+    </style>
+
+    <style name="Widget.App.BottomAppBar.Darkens" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomAppBar.Darkens</item>
+    </style>
+
+    <style name="Widget.App.BottomAppBar.Normal" parent="Widget.MaterialComponents.BottomAppBar.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomAppBar.Normal</item>
+    </style>
+
+
+    <style name="TextAppearance.App.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/neuron</item>
+        <item name="android:fontFamily">@font/neuron</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomAppBar.Hudi" parent="">
+        <item name="colorPrimary">@color/shrine_pink</item>
+        <item name="colorOnPrimary">@color/shrine_pink</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.App.Subtitle1</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomAppBar.Darkens" parent="">
+        <item name="colorPrimary">@color/darkens</item>
+        <item name="colorOnPrimary">@color/darkens</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.App.Subtitle1</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomAppBar.Normal" parent="">
+        <item name="colorPrimary">@color/normal</item>
+        <item name="colorOnPrimary">@color/normal</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.App.Subtitle1</item>
+    </style>
+
+    <style name="Widget.App.FloatingActionButton.Hudi" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton.Hudi</item>
+    </style>
+
+    <style name="Widget.App.FloatingActionButton.Normal" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton.Normal</item>
+    </style>
+
+    <style name="Widget.App.FloatingActionButton.Darkens" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.FloatingActionButton.Darekns
+        </item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButton.Normal" parent="">
+        <item name="colorOnSecondary">@color/black_2c</item>
+        <item name="colorSecondary">@color/normal</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButton.Hudi" parent="">
+        <item name="colorOnSecondary">@color/black_2c</item>
+        <item name="colorSecondary">@color/shrine_pink</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+    </style>
+
+    <style name="ThemeOverlay.App.FloatingActionButton.Darekns" parent="">
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorSecondary">@color/darkens</item>
+        <item name="shapeAppearanceSmallComponent">@style/ShapeAppearance.App.SmallComponent</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">8dp</item>
+    </style>
+
+
+    <style name="Widget.App.Button.Dark" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/colorPrimaryDark</item>
+        <item name="android:background">@drawable/roundedbutton</item>
+    </style>
+
+    <style name="Widget.App.Button.Hudi" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/shrine_pink</item>
+        <item name="android:background">@drawable/roundedbutton</item>
+    </style>
+
+    <style name="Widget.App.Button.Normal" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/normal</item>
+        <item name="android:background">@drawable/roundedbutton</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Theme.Dark" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="hintTextColor">@color/white</item>
+    </style>
+</resources>
