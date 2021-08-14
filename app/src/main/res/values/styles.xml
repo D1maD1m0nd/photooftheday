@@ -92,4 +92,15 @@
     <style name="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Theme.Dark" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextColor">@color/white</item>
     </style>
+
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/darkens_back</item>
+        <item name="colorOnPrimary">@color/darkens_back</item>
+        <item name="android:background">@color/darkens_back</item>
+    </style>
 </resources>
