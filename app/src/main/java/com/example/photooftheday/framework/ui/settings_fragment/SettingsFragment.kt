@@ -1,4 +1,4 @@
-package com.example.photooftheday.framework.ui
+package com.example.photooftheday.framework.ui.settings_fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

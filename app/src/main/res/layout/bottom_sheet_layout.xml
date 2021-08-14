@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:visibility="visible"
     app:behavior_hideable="false"
-    app:behavior_peekHeight="100dp"
+    app:behavior_peekHeight="30dp"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     tools:visibility="visible">
 

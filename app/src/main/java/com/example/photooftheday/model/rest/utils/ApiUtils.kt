@@ -8,10 +8,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiUtils {
     private const val TIMEOUT = 10L
-    private const val BASE_URL_MAIN = "https://api.nasa.gov/"
-    private const val BASE_PLANET_REPO = "planetary/"
-    const val baseUrl = "$BASE_URL_MAIN$BASE_PLANET_REPO"
-
+    const val BASE_URL_MAIN = "https://api.nasa.gov/"
     fun getOkHTTPBuilderWithHeaders(): OkHttpClient {
         val httpClient = OkHttpClient.Builder()
         httpClient.connectTimeout(TIMEOUT, TimeUnit.SECONDS)
