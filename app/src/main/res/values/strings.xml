@@ -20,4 +20,6 @@
     <string name="darkens">dark</string>
     <string name="choice_theme">Choice Theme</string>
     <string name="theme">тема</string>
+    <string name="home">главная</string>
+    <string name="earth">ЗЕМЛЯ</string>
 </resources>
