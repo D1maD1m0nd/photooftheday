@@ -33,7 +33,11 @@ class MarsViewModel(val liveDataToObserve: MutableLiveData<PictureOfTheDayData> 
             response: Response<MarsPhotos>
         ) {
             val responseData = response.body()
+
+            if (response.isSuccessful && responseData != null && responseData.photos.isNotEmpty()) {
+
             if (response.isSuccessful && responseData != null) {
+
                 liveDataToObserve.value =
                     PictureOfTheDayData.SuccessMars(responseData.photos.first())
             } else {
