@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
         setTheme(getPrefTheme())
         setContentView(bind.root)
 
+
         initBottomNavigationMenu()
 
     }
@@ -50,6 +51,10 @@ class MainActivity : AppCompatActivity() {
             DARK_THEME -> R.color.white
             NORMAL_THEME -> R.color.white
             else -> R.color.white
+
+        if (savedInstanceState == null) {
+            initBottomNavigationMenu()
+
         }
         val uncheckedColor = when (theme) {
             DARK_THEME -> R.color.none_selected_items
@@ -67,6 +72,20 @@ class MainActivity : AppCompatActivity() {
         navView.itemIconTintList = myList
         navView.itemTextColor = myList
 
+    }
+    private fun initBottomNavigationMenu() = with(bind) {
+        navView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.home -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
+                R.id.app_bar_fav -> PlanetsInfoFragment.newInstance()
+                    .showFragment(this@MainActivity)
+                R.id.app_bar_choice_theme -> SettingsFragment.newInstance()
+                    .showFragment(this@MainActivity)
+                else -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
+            }
+            return@setOnItemSelectedListener true
+        }
+        navView.selectedItemId = R.id.home
     }
 
     fun savePrefTheme(theme: Int) {
