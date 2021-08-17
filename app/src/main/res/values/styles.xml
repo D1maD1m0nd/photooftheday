@@ -101,5 +101,6 @@
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
         <item name="colorPrimary">@color/darkens_back</item>
         <item name="colorOnPrimary">@color/darkens_back</item>
+        <item name="android:background">@color/darkens_back</item>
     </style>
 </resources>

@@ -18,13 +18,19 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         bind = ActivityMainBinding.inflate(layoutInflater)
         setTheme(getPrefTheme())
+        bind = ActivityMainBinding.inflate(layoutInflater)
         setContentView(bind.root)
+
 
 
         initBottomNavigationMenu()
 
     }
     private fun initBottomNavigationMenu() = with(bind) {
+
+
+    navView.setOnItemSelectedListener { item ->
+
         setStyleBottomNavigationMenu()
         navView.setOnItemSelectedListener { item ->
             when (item.itemId) {
@@ -75,6 +81,7 @@ class MainActivity : AppCompatActivity() {
     }
     private fun initBottomNavigationMenu() = with(bind) {
         navView.setOnItemSelectedListener { item ->
+
             when (item.itemId) {
                 R.id.home -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
                 R.id.app_bar_fav -> PlanetsInfoFragment.newInstance()

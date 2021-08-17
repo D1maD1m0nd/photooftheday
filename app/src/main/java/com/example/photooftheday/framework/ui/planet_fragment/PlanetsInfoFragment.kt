@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.photooftheday.databinding.FragmentPlanetsInfoBinding
 import com.example.photooftheday.framework.ui.planet_fragment.adapter.ViewPagerAdapter
-
 import com.example.photooftheday.framework.utils.ZoomTransformer
-
+import com.example.photooftheday.framework.utils.ZoomTransformer
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -32,6 +31,10 @@ class PlanetsInfoFragment : Fragment() {
             viewPager.adapter = ViewPagerAdapter(manager, lifecycle)
 
             viewPager.setPageTransformer(ZoomTransformer())
+
+
+            viewPager.setPageTransformer(ZoomTransformer())
+
 
             TabLayoutMediator(tabLayout, viewPager) { tab, position ->
                 when (position) {

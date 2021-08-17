@@ -4,6 +4,7 @@
         <item name="iconTint">@color/black_2c</item>
         <item name="materialButtonStyle">@style/Widget.App.Button.Hudi</item>
         <item name="android:textColor">@color/black_2c</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
     <style name="MyDarkensTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
@@ -19,6 +20,7 @@
         <item name="navigationIcon">@drawable/ic_hamburger_menu_bottom_bar</item>
         <item name="materialButtonStyle">@style/Widget.App.Button.Normal</item>
         <item name="android:textColor">@color/black_2c</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
 </resources>
