@@ -12,13 +12,13 @@ fun Random.nextNegativeInt(value : Int) = Random().nextInt(value) * -1
 fun Fragment.showFragment(compatActivity: AppCompatActivity) = this.apply {
     compatActivity
         .supportFragmentManager.beginTransaction().replace(R.id.container, this)
-        .commitAllowingStateLoss()
+        .commit()
 
 }
 
 fun Fragment.showFragment(fragment: Fragment) = this.apply {
     activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, fragment)
-        ?.addToBackStack(null)?.commitAllowingStateLoss()
+        ?.addToBackStack(null)?.commit()
 }
 
 
