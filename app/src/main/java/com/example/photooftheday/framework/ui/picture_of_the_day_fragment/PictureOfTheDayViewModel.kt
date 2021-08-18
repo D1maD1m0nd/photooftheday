@@ -3,11 +3,11 @@ package com.example.photooftheday.framework.ui.picture_of_the_day_fragment
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.photooftheday.extansions.nextNegativeInt
 import com.example.photooftheday.model.consts.PictureOfTheDayData
 import com.example.photooftheday.model.consts.Types
 import com.example.photooftheday.model.data.PODServerResponseData
 import com.example.photooftheday.model.rest.NasaApiRepositoryImpl
-import com.example.photooftheday.model.rest.utils.nextNegativeInt
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
