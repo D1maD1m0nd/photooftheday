@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.photooftheday.databinding.ActivityMainBinding
 import com.example.photooftheday.extansions.showFragment
+import com.example.photooftheday.framework.ui.info_fragment.InfoFragment
 import com.example.photooftheday.framework.ui.picture_of_the_day_fragment.PictureOfTheDayFragment
 import com.example.photooftheday.framework.ui.planet_fragment.PlanetsInfoFragment
 import com.example.photooftheday.framework.ui.settings_fragment.SettingsFragment
@@ -25,14 +26,16 @@ class MainActivity : AppCompatActivity() {
     private fun initBottomNavigationMenu() = with(bind) {
 
     navView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.home -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
-                R.id.app_bar_fav -> PlanetsInfoFragment.newInstance()
-                    .showFragment(this@MainActivity)
-                R.id.app_bar_choice_theme -> SettingsFragment.newInstance()
-                    .showFragment(this@MainActivity)
-                else -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
-            }
+        when (item.itemId) {
+            R.id.home -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
+            R.id.app_bar_fav -> PlanetsInfoFragment.newInstance()
+                .showFragment(this@MainActivity)
+            R.id.app_bar_choice_theme -> SettingsFragment.newInstance()
+                .showFragment(this@MainActivity)
+            R.id.app_bar_settings -> InfoFragment.newInstance()
+                .showFragment(this@MainActivity)
+            else -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
+        }
             return@setOnItemSelectedListener true
         }
         navView.selectedItemId = R.id.home
