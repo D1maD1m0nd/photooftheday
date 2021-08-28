@@ -6,10 +6,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.photooftheday.databinding.ActivityMainBinding
+import com.example.photooftheday.extansions.showFragment
 import com.example.photooftheday.framework.ui.picture_of_the_day_fragment.PictureOfTheDayFragment
 import com.example.photooftheday.framework.ui.planet_fragment.PlanetsInfoFragment
 import com.example.photooftheday.framework.ui.settings_fragment.SettingsFragment
-import com.example.photooftheday.model.rest.utils.showFragment
 
 
 class MainActivity : AppCompatActivity() {

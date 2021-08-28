@@ -39,13 +39,14 @@ class EarthFragment : Fragment() {
                 val serverResponseData = data.serverResponseData
                 val image = serverResponseData?.image
                 if (!image.isNullOrBlank()) {
-                    val time = Calendar.getInstance()
-                    time.add(
-                        Calendar.DATE,
-                        -1
-                    )
+
+                    val time = SimpleDateFormat(
+                        "yyyy-MM-dd",
+                        Locale.getDefault()
+                    ).parse(serverResponseData.date)
                     val dateFormat =
-                        SimpleDateFormat(FORMAT_DATE, Locale.getDefault()).format(time.time)
+                        SimpleDateFormat(FORMAT_DATE, Locale.getDefault())
+                            .format(time ?: Calendar.getInstance().time)
                     val url =
                         "$BASE_IMAGE_DIRECTORY$dateFormat/png/$image.png?api_key=${BuildConfig.NASA_API_KEY}"
                     Picasso
@@ -60,7 +61,7 @@ class EarthFragment : Fragment() {
 
                             override fun onError(e: java.lang.Exception?) {
                                 //do smth when there is picture loading error
-
+                                e?.printStackTrace()
                             }
                         })
                 }

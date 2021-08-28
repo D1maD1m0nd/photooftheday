@@ -1,4 +1,4 @@
-package com.example.photooftheday.model.rest.utils
+package com.example.photooftheday.extansions
 
 
 import androidx.appcompat.app.AppCompatActivity
