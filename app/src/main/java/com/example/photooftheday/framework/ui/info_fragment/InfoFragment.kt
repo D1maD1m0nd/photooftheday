@@ -1,15 +1,17 @@
 package com.example.photooftheday.framework.ui.info_fragment
 
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
-import android.text.SpannableString
-import android.text.Spanned
-import android.text.style.BulletSpan
+import android.text.Html
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.BackgroundColorSpan
+import android.text.style.ForegroundColorSpan
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.photooftheday.R
 import com.example.photooftheday.databinding.FragmentInfoBinding
@@ -30,15 +32,35 @@ class InfoFragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val string = SpannableString("abc\n123\n")
-
-        val color = ContextCompat.getColor(requireContext(), R.color.colorPrimary)
-        string.setSpan(BulletSpan(1, color, 5), 0, string.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-        string.setSpan(BulletSpan(1, color, 5), 4, string.length, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
-
-        binding.list.text = string
+        setStyleText()
     }
 
+    @RequiresApi(Build.VERSION_CODES.P)
+    fun setStyleText() {
+        val text =
+            "Список возможностей <ul><li>Фото дня</li><li>Фото марса</li><li>Фото Земли</li></ul>"
+        binding.list.text = Html.fromHtml(text, 1)
+
+        val aboutAppString = resources.getString(R.string.about_app)
+        val spannable = SpannableStringBuilder(aboutAppString)
+        spannable.setSpan(
+            ForegroundColorSpan(Color.GREEN),
+            0, 6,
+            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+        )
+        spannable.setSpan(
+            ForegroundColorSpan(Color.BLUE),
+            6, aboutAppString.length,
+            Spannable.SPAN_EXCLUSIVE_INCLUSIVE
+        )
+        spannable.setSpan(
+            BackgroundColorSpan(Color.YELLOW),
+            0, aboutAppString.length,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        binding.title.text = spannable
+    }
     companion object {
         fun newInstance(): Fragment {
             val args = Bundle()
