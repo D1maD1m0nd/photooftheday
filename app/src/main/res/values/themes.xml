@@ -1,5 +1,9 @@
 <resources>
 
+    <style name="SplashsScreenTheme">
+        <item name="android:windowBackground">@drawable/splash_background_drawable</item>
+    </style>
+
     <style name="MyHudiColorTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="iconTint">@color/black_2c</item>
         <item name="materialButtonStyle">@style/Widget.App.Button.Hudi</item>

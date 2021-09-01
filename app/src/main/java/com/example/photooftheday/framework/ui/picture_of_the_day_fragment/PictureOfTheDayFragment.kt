@@ -3,6 +3,9 @@ package com.example.photooftheday.framework.ui.picture_of_the_day_fragment
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.transition.Fade
+import android.transition.TransitionManager
+import android.transition.TransitionSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,6 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class PictureOfTheDayFragment : Fragment() {
     private lateinit var binding: FragmentPictureOfTheDayBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    private var imageIsVisible = false
 
     //Ленивая инициализация модели
     private val viewModel: PictureOfTheDayViewModel by viewModel()
@@ -44,6 +48,7 @@ class PictureOfTheDayFragment : Fragment() {
 
             chipGroup.setOnCheckedChangeListener { _, checkedId ->
                 var type = 0
+                setImageAnimationInvisible()
                 when (checkedId) {
                     yeastradayChip.id -> type = Types.MINUS.value
                     randomChip.id -> type = Types.RANDOM.value
@@ -68,6 +73,7 @@ class PictureOfTheDayFragment : Fragment() {
                     //Отобразите ошибку
                     //showError("Сообщение, что ссылка пустая")
                 } else {
+
                     //Отобразите фото
                     //showSuccess()
                     //Coil в работе: достаточно вызвать у нашего ImageView
@@ -75,16 +81,15 @@ class PictureOfTheDayFragment : Fragment() {
                     Picasso
                         .get()
                         .load(serverResponseData.hdurl)
-                        .placeholder(R.drawable.ic_no_photo_vector)
-                        .fit()
                         .into(binding.imageView, object : com.squareup.picasso.Callback {
                             override fun onSuccess() {
                                 //set animations here
+
+                                setImageAnimationVisible()
                             }
 
                             override fun onError(e: java.lang.Exception?) {
                                 //do smth when there is picture loading error
-
                             }
                         })
 
@@ -100,6 +105,32 @@ class PictureOfTheDayFragment : Fragment() {
             is PictureOfTheDayData.Error -> {
             }
         }
+    }
+
+    private fun setImageAnimationVisible() = with(binding) {
+        val set = TransitionSet()
+            .addTransition(Fade())
+            .setDuration(2000)
+        TransitionManager.beginDelayedTransition(
+            main,
+            set
+        )
+        imageIsVisible = !imageIsVisible
+        imageView.visibility = View.VISIBLE
+
+    }
+
+    private fun setImageAnimationInvisible() = with(binding) {
+        val set = TransitionSet()
+            .addTransition(Fade())
+            .setDuration(250)
+        TransitionManager.beginDelayedTransition(
+            main,
+            set
+        )
+        imageIsVisible = !imageIsVisible
+        imageView.visibility = View.INVISIBLE
+
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
