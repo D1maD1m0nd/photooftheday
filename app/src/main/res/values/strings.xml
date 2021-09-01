@@ -22,4 +22,5 @@
     <string name="theme">тема</string>
     <string name="home">главная</string>
     <string name="earth">ЗЕМЛЯ</string>
+    <string name="about_app">О приложении</string>
 </resources>
