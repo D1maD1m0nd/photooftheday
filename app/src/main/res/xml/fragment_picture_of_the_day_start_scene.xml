@@ -9,7 +9,7 @@
         <OnSwipe
             motion:touchAnchorId="@id/wiki_button"
             motion:touchAnchorSide="left"
-            app:onTouchUp="autoCompleteToStart"
+            app:onTouchUp="autoComplete"
             motion:dragDirection="dragLeft" />
 
     </Transition>
