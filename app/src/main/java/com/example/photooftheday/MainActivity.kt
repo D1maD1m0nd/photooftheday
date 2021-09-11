@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.photooftheday.databinding.ActivityMainBinding
 import com.example.photooftheday.extansions.showFragment
-import com.example.photooftheday.framework.ui.info_fragment.InfoFragment
+import com.example.photooftheday.framework.ui.note_list_fragment.NoteListFragment
 import com.example.photooftheday.framework.ui.picture_of_the_day_fragment.PictureOfTheDayFragment
 import com.example.photooftheday.framework.ui.planet_fragment.PlanetsInfoFragment
 import com.example.photooftheday.framework.ui.settings_fragment.SettingsFragment
@@ -32,7 +32,7 @@ class MainActivity : AppCompatActivity() {
                 .showFragment(this@MainActivity)
             R.id.app_bar_choice_theme -> SettingsFragment.newInstance()
                 .showFragment(this@MainActivity)
-            R.id.app_bar_settings -> InfoFragment.newInstance()
+            R.id.app_bar_settings -> NoteListFragment.newInstance()
                 .showFragment(this@MainActivity)
             else -> PictureOfTheDayFragment.newInstance().showFragment(this@MainActivity)
         }

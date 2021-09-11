@@ -38,6 +38,11 @@
         <entry key="..\:/PhotoOfTheDay/app/src/main/res/menu/bottom_menu.xml" value="0.3489583333333333" />
         <entry key="..\:/PhotoOfTheDay/app/src/main/res/menu/drawer_sheet_menu.xml" value="0.3489583333333333" />
         <entry key="..\:/PhotoOfTheDay/app/src/main/res/menu/menu_bottom_bar_other_screen.xml" value="0.3489583333333333" />
+        <entry key="..\:/androisapps/PhotoOfTheDay/app/src/main/res/layout/active_note_item.xml" value="0.3489583333333333" />
+        <entry key="..\:/androisapps/PhotoOfTheDay/app/src/main/res/layout/cancael_note_item.xml" value="0.3489583333333333" />
+        <entry key="..\:/androisapps/PhotoOfTheDay/app/src/main/res/layout/cancel_note_item.xml" value="0.3489583333333333" />
+        <entry key="..\:/androisapps/PhotoOfTheDay/app/src/main/res/layout/disabled_note_item.xml" value="0.3489583333333333" />
+        <entry key="..\:/androisapps/PhotoOfTheDay/app/src/main/res/layout/fragment_note_list.xml" value="0.1" />
       </map>
     </option>
   </component>
